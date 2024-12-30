@@ -1,0 +1,459 @@
+ /* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Clear Sans Light', sans-serif;
+}
+
+#vanta-background {
+  position: fixed; /* Fix background to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it stays behind all other content */
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  font-size: 20px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow-y: auto; /* Ensure vertical scrolling */
+}
+
+/* Utility */
+.hide {
+  display: none;
+}
+
+/* Page Styling */
+.page {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* Page 1 - No Changes */
+#page1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  background: url('https://i.imgur.com/9ZTJaj0_d.webp?maxwidth=1520&fidelity=grand') no-repeat center center/cover;
+}
+
+/* Page 2 - Fixes Applied */
+#page2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh; /* Ensure it takes up full viewport height */
+  overflow-y: auto;
+  background: transparent; /* Prevent background color from overlaying */
+  padding: 20px;
+}
+
+/* Update header color to match new background */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  padding: 0 0.5rem;
+  z-index: 6;
+}
+
+.header img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
+  margin-right: 1rem;
+}
+
+.header img:nth-child(2) {
+  width: 350px;
+  animation: hue 10s infinite linear;
+  filter: hue-rotate(0deg);
+}
+
+.header img:hover {
+  transform: scale(1.1);
+}
+
+.header1,
+.header2 {
+  font-family: 'Clear Sans', sans-serif;
+  font-size: 64px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 1.2;
+  background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hue 10s infinite linear;
+  margin: 0;
+}
+
+/* Main Sponsor Section */
+.main-sponsor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.main-sponsor img {
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Additional Sponsors */
+.additional-sponsors,
+.institutes {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.additional-sponsors h2,
+.institutes h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.sponsor-logos,
+.institute-logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sponsor-logos img,
+.institute-logos img {
+  width: 80px;
+  height: auto;
+}
+
+/* Match Card */
+/* Container card to hold all match cards */
+.container-card {
+  background-color: #f8f8f8; /* Light background for the container */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-width: 1000px; /* Adjust the width */
+  margin: 20px auto; /* Center the container */
+  display: flex;
+  flex-wrap: wrap; /* Wrap child cards */
+  gap: 20px; /* Space between match cards */
+  justify-content: center; /* Center align all cards */
+}
+
+/* Match card styles (unchanged) */
+.match-card {
+  background-color: #ffffff; /* White background for cards */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 250px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.match-card .team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.match-card .team.winner {
+  background-color: #d4f4d0;
+  border: 2px solid #4CAF50;
+  font-weight: bold;
+}
+
+
+.team-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.team-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: black;
+}
+
+.team-score {
+  font-size: 16px;
+  color: #333;
+}
+
+.match-date {
+  font-size: 14px;
+  color: #888;
+  margin-top: 10px;
+}
+
+#standings-tab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  color: white;
+}
+
+.sport-card {
+  border: 1px solid #dddbdb;
+  border-radius: 10px;
+  background: #f4f3f3;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sport-card h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #090909;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.standings-table th {
+  background: grey;
+  color: whitesmoke;
+}
+
+.standings-table tr:nth-child(even) {
+  background: #f0efef;
+}
+
+.hide {
+  display: none !important;
+}
+
+.tab {
+  display: block;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  z-index: 6;
+}
+
+.navbar .link {
+  margin: 0 10px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.navbar .link.active {
+  background-color: #c20e0e;
+  color: #fff;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Avoid overlap with navbar */
+  z-index: 1; /* Ensure it appears above Vanta background */
+}
+
+.tab {
+  padding: 20px;
+  z-index: 1;
+}
+
+.tab.hide {
+  display: none;
+}
+
+.tab .loading {
+  text-align: center;
+}
+
+/* Matches */
+.matches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  z-index: 6;
+}
+
+/* Sport Section */
+.sport-section {
+  margin-bottom: 30px;
+  z-index: 6;
+  color: #fcfbfb;
+}
+
+h2.sport-header {
+  color: #fcfbfb;
+}
+
+.sport-section h2 {
+  font-size: 24px;
+  color: #fcfbfb;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header img {
+    width: 80px;
+  }
+
+  .header img:nth-child(2) {
+    width: 250px;
+  }
+
+  .match-card {
+    max-width: 90%;
+  }
+
+  .header1,
+  .header2 {
+    font-size: 2rem;
+  }
+}
+
+td, th {
+  display: table-cell;
+  vertical-align: inherit;
+  color: black;
+  font-size: small;
+}
+
+h2 {
+  display: block;
+  font-size: medium;
+  font-weight: 300;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+
+  .sponsor-logos img,
+  .institute-logos img {
+    width: 60px;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  #standings-tab {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .sport-card {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .standings-table th,
+  .standings-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+/* Keyframes for Hue Animation on Background */
+@keyframes hueBackground {
+  0% {
+    background: linear-gradient(92deg, #f35626, #feab3a);
+  }
+  50% {
+    background: linear-gradient(92deg, #feab3a, #1c13c5);
+  }
+  100% {
+    background: linear-gradient(92deg, #f35626, #feab3a);
+  }
+}
+
+@media (max-width: 450px) {
+  .navbar {
+    flex-direction: column; /* Stack the navbar links vertically */
+    align-items: center; /* Center align the links */
+  }
+
+  .navbar .link {
+    width: 100%; /* Make each link take up full width */
+    text-align: center; /* Center align the text */
+    font-size: 0.8rem; /* Further reduce font size for very small screens */
+  }
+}
+
+/* Keyframes for Hue Animation on Text */
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+

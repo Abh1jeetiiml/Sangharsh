@@ -60,24 +60,30 @@ async function getAllMatches() {
             <div class="container-card">
               ${sportMatches
                 .map(match => {
-                  const team1Score = parseInt(match[4], 10);
-                  const team2Score = parseInt(match[5], 10);
+                  let team1Score = match[4];
+                  let team2Score = match[5];
+
+                  // Format scores for cricket
+                  if (selectedSport === 'Cricket (M)') {
+                    team1Score = formatCricketScore(team1Score);
+                    team2Score = formatCricketScore(team2Score);
+                  }
 
                   // Determine winner
-                  const team1WinnerClass = team1Score > team2Score ? 'winner' : '';
-                  const team2WinnerClass = team2Score > team1Score ? 'winner' : '';
+                  const team1WinnerClass = parseFloat(match[4]) > parseFloat(match[5]) ? 'winner' : '';
+                  const team2WinnerClass = parseFloat(match[5]) > parseFloat(match[4]) ? 'winner' : '';
 
                   return `
                     <div class="match-card">
                       <div class="team ${team1WinnerClass}">
                         <img src="${getTeamLogo(match[2])}" alt="${match[2]}" class="team-logo" />
                         <span class="team-name">${match[2]}</span>
-                        <span class="team-score">${match[4]}</span>
+                        <span class="team-score">${team1Score}</span>
                       </div>
                       <div class="team ${team2WinnerClass}">
                         <img src="${getTeamLogo(match[3])}" alt="${match[3]}" class="team-logo" />
                         <span class="team-name">${match[3]}</span>
-                        <span class="team-score">${match[5]}</span>
+                        <span class="team-score">${team2Score}</span>
                       </div>
                       <div class="match-date">${new Date(match[1]).toLocaleString()}</div>
                     </div>
@@ -99,4 +105,13 @@ async function getAllMatches() {
   } catch (error) {
     console.error('Error fetching all matches:', error);
   }
+}
+
+function formatCricketScore(score) {
+  // Ensure the score is a string before splitting
+  const scoreStr = score.toString();
+  const parts = scoreStr.split('.'); // Split score into integer and decimal parts
+  const runs = parts[0]; // Runs (integer part)
+  const wickets = parts[1] ? parts[1] : '0'; // Wickets (decimal part or default 0)
+  return `${runs}/${wickets}`;
 }

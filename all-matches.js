@@ -6,6 +6,8 @@ async function getAllMatches() {
 
     const matches = data.matches; // All matches fetched from Apps Script
     const allMatchesEl = document.getElementById('all-matches-tab');
+    const sportTilesEl = document.getElementById('sport-tiles');
+    const matchesContainerEl = document.getElementById('matches-container');
 
     // Get today's date and filter the matches
     const today = new Date();
@@ -18,7 +20,7 @@ async function getAllMatches() {
 
     // If no finished matches are found
     if (finishedMatches.length === 0) {
-      allMatchesEl.innerHTML = '<div>No finished matches available.</div>';
+      matchesContainerEl.innerHTML = '<div>No finished matches available.</div>';
       return;
     }
 
@@ -36,56 +38,65 @@ async function getAllMatches() {
     // **Sort sports alphabetically** before rendering
     const sortedSports = Object.keys(groupedMatches).sort();
 
-    // Render the matches grouped by sport
-    allMatchesEl.innerHTML = sortedSports
-      .map(sport => {
-        const sportMatches = groupedMatches[sport];
-        return `
+    // Render sport tiles
+    sportTilesEl.innerHTML = sortedSports
+      .map(
+        sport => `<div class="sport-tile" data-sport="${sport}">${sport}</div>`
+      )
+      .join('');
+
+    // Add click event listeners for each tile
+    const sportTiles = document.querySelectorAll('.sport-tile');
+    sportTiles.forEach(tile => {
+      tile.addEventListener('click', () => {
+        const selectedSport = tile.getAttribute('data-sport');
+        const sportMatches = groupedMatches[selectedSport];
+
+        // Hide the tiles and show the matches
+        sportTilesEl.style.display = 'none';
+        matchesContainerEl.innerHTML = `
           <div class="sport-section">
-            <h2>${sport}</h2>
+            <h2>${selectedSport}</h2>
             <div class="container-card">
-              ${sportMatches.map((match) => {
-                const team1Score = parseInt(match[4], 10);
-                const team2Score = parseInt(match[5], 10);
+              ${sportMatches
+                .map(match => {
+                  const team1Score = parseInt(match[4], 10);
+                  const team2Score = parseInt(match[5], 10);
 
-                // Determine winner
-                const team1WinnerClass = team1Score > team2Score ? 'winner' : '';
-                const team2WinnerClass = team2Score > team1Score ? 'winner' : '';
+                  // Determine winner
+                  const team1WinnerClass = team1Score > team2Score ? 'winner' : '';
+                  const team2WinnerClass = team2Score > team1Score ? 'winner' : '';
 
-                return `
-                  <div class="match-card">
-                    <div class="team ${team1WinnerClass}">
-                      <img src="${getTeamLogo(match[2])}" alt="${match[2]}" class="team-logo" />
-                      <span class="team-name">${match[2]}</span>
-                      <span class="team-score">${match[4]}</span>
+                  return `
+                    <div class="match-card">
+                      <div class="team ${team1WinnerClass}">
+                        <img src="${getTeamLogo(match[2])}" alt="${match[2]}" class="team-logo" />
+                        <span class="team-name">${match[2]}</span>
+                        <span class="team-score">${match[4]}</span>
+                      </div>
+                      <div class="team ${team2WinnerClass}">
+                        <img src="${getTeamLogo(match[3])}" alt="${match[3]}" class="team-logo" />
+                        <span class="team-name">${match[3]}</span>
+                        <span class="team-score">${match[5]}</span>
+                      </div>
+                      <div class="match-date">${new Date(match[1]).toLocaleString()}</div>
                     </div>
-                    <div class="team ${team2WinnerClass}">
-                      <img src="${getTeamLogo(match[3])}" alt="${match[3]}" class="team-logo" />
-                      <span class="team-name">${match[3]}</span>
-                      <span class="team-score">${match[5]}</span>
-                    </div>
-                    <div class="match-date">${new Date(match[1]).toLocaleString()}</div>
-                  </div>
-                `;
-              }).join('')}
+                  `;
+                })
+                .join('')}
             </div>
+            <button id="close-button" class="close-button">Close</button>
           </div>
         `;
-      })
-      .join('');
+
+        // Add event listener to the "Close" button
+        document.getElementById('close-button').addEventListener('click', () => {
+          matchesContainerEl.innerHTML = ''; // Clear the matches content
+          sportTilesEl.style.display = 'flex'; // Show the tiles again
+        });
+      });
+    });
   } catch (error) {
     console.error('Error fetching all matches:', error);
   }
-}
-
-// Helper function to get the team logo
-function getTeamLogo(teamName) {
-  const teamLogos = {
-    "IIM-A": "https://upload.wikimedia.org/wikipedia/commons/2/27/IIMA_LOGO_BLACK.png", // Replace with actual logo paths
-    "IIM-B": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/IIM_Bangalore_Logo.svg/440px-IIM_Bangalore_Logo.svg.png", // Replace with actual logo paths
-    "IIM-C": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/IIM_Calcutta_Logo.svg/1200px-IIM_Calcutta_Logo.svg.png",
-    "IIM-L": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/IIM_Lucknow_Logo.svg/1200px-IIM_Lucknow_Logo.svg.png",
-    // Add more teams and their logo paths here
-  };
-  return teamLogos[teamName] || "default_logo.png"; // Default logo if not found
 }

@@ -15,12 +15,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
     />
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./today-matches.js" defer></script>
-    <script src="./all-matches.js" defer></script>
-    <script src="./standings.js" defer></script>
-    <script src="./navigation.js" defer></script>
-    <script src="./init.js" defer></script>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <script src="./src/js/today-matches.js" defer></script>
+    <script src="./src/js/all-matches.js" defer></script>
+    <script src="./src/js/standings.js" defer></script>
+    <script src="./src/js/navigation.js" defer></script>
+    <script src="./src/js/init.js" defer></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
     ></script>
@@ -76,12 +76,18 @@
           />
         </div>
       </div>
-
       <div class="left-panel">
         <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mnSx1Q8KJEyUTlEBWLX2CJSmcxt-DhSXTVsUXwJLccw/edit?usp=sharing'">
           Link to Schedule
         </button>
-      </div>
+        <button class="open-btn">Show Google Sheet</button>
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS1xFxBddeKnFBCsqvkLuDnc6KMry4kNSwhlXlYd_B9pesc0KvAh-pzuLNOVYZwdVjP0LL5u0FP9KwS/pubhtml?gid=0&amp;single=true&amp;widget=false&amp;headers=false"></iframe>
+            <button class="close-btn1">Close</button>
+          </div>
+        </div>
+  </div>
     </section>
 
     <!-- Page 2 -->
@@ -152,6 +158,27 @@
           link.addEventListener("click", () => selectTab(index));
         });
       });
+
+      const openBtn = document.querySelector('.open-btn');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.querySelector('.close-btn1');
+
+    // Show modal on button click
+    openBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+    });
+
+    // Hide modal on close button click
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    // Hide modal if clicking outside the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
     </script>
   </body>
 </html>

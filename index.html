@@ -11,61 +11,77 @@
       href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
     <script src="./today-matches.js" defer></script>
     <script src="./all-matches.js" defer></script>
     <script src="./standings.js" defer></script>
     <script src="./navigation.js" defer></script>
     <script src="./init.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"></script>  
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"
+    ></script>
   </head>
   <body>
     <section id="page1" class="page">
-        <div class="header">
-          <img src="https://i.imgur.com/TLiUl2x_d.webp?maxwidth=1520&fidelity=grand" alt="Sangharsh Logo" />
-          <h1 class="header1">SANGHARSH 2025</h1>
-          <img src="https://i.imgur.com/mgQyATT_d.webp?maxwidth=760&fidelity=grand" alt="Sangharsh Logo" />
-        </div>
-    
-        <!-- Main Sponsor -->
-        <div class="main-sponsor">
-          <img src="https://i.imgur.com/MhBSylB_d.webp?maxwidth=1520&fidelity=grand" alt="PUMA" />
-        </div>
-    
-        <!-- Additional Sponsors -->
-        <!-- <div class="additional-sponsors">
-          <h2>Additional Sponsors</h2>
-          <div class="sponsor-logos">
-            <img src="/Users/abhijeet/Downloads/sponsor1.png" alt="Sponsor 1" />
-            <img src="/Users/abhijeet/Downloads/sponsor2.png" alt="Sponsor 2" />
-            <img src="/Users/abhijeet/Downloads/sponsor3.png" alt="Sponsor 3" />
-          </div>
-        </div> -->
+      <div class="header">
+        <img
+          src="https://i.imgur.com/TLiUl2x_d.webp?maxwidth=1520&fidelity=grand"
+          alt="Sangharsh Logo"
+        />
+        <h1 class="header1">SANGHARSH 2025</h1>
+        <img
+          src="https://i.imgur.com/mgQyATT_d.webp?maxwidth=760&fidelity=grand"
+          alt="Sangharsh Logo"
+        />
+      </div>
 
-        <!-- Participating Institutes -->
-        <div class="institutes">
-          <div class="institute-logos">
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/IIM_Lucknow_Logo.svg/1200px-IIM_Lucknow_Logo.svg.png" alt="Institute 4" />
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/IIMA_LOGO_BLACK.png" alt="Institute 1" />
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/IIM_Bangalore_Logo.svg/440px-IIM_Bangalore_Logo.svg.png" alt="Institute 2" />
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/IIM_Calcutta_Logo.svg/1200px-IIM_Calcutta_Logo.svg.png" alt="Institute 3" />
-          </div>
+      <!-- Main Sponsor -->
+      <div class="main-sponsor">
+        <img
+          src="https://i.imgur.com/MhBSylB_d.webp?maxwidth=1520&fidelity=grand"
+          alt="PUMA"
+        />
+      </div>
+
+      <!-- Participating Institutes -->
+      <div class="institutes">
+        <div class="institute-logos">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/IIM_Lucknow_Logo.svg/1200px-IIM_Lucknow_Logo.svg.png"
+            alt="Institute 4"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/2/27/IIMA_LOGO_BLACK.png"
+            alt="Institute 1"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/IIM_Bangalore_Logo.svg/440px-IIM_Bangalore_Logo.svg.png"
+            alt="Institute 2"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/IIM_Calcutta_Logo.svg/1200px-IIM_Calcutta_Logo.svg.png"
+            alt="Institute 3"
+          />
         </div>
       </div>
 
       <div class="left-panel">
-        <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mnSx1Q8KJEyUTlEBWLX2CJSmcxt-DhSXTVsUXwJLccw/edit?usp=sharing'">Link to Schedule</button>
+        <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mnSx1Q8KJEyUTlEBWLX2CJSmcxt-DhSXTVsUXwJLccw/edit?usp=sharing'">
+          Link to Schedule
+        </button>
       </div>
-      
-
     </section>
 
     <!-- Page 2 -->
     <section id="page2" class="page">
-      <div id="vanta-background"></div> <!-- Vanta Background separate from content -->
+      <div id="vanta-background"></div> <!-- Vanta Background -->
       <div class="navbar">
         <div class="link active">Today's Schedule</div>
         <div class="link">Completed Matches</div>
@@ -76,42 +92,59 @@
           <div class="loading" style="color: white;">Loading ...</div>
         </div>
         <div id="all-matches-tab" class="tab all-matches hide">
-          <div class="loading" style="color: white;">Loading ...</div>
+          <div id="sport-tiles" class="sport-tiles-container"></div>
+          <div id="matches-container"></div>
         </div>
         <div id="standings-tab" class="tab standings hide">
           <div class="loading" style="color: white;">Loading ...</div>
         </div>
       </div>
     </section>
-    
 
     <script>
-        VANTA.DOTS({
-          el: "#vanta-background",  // Apply effect only to the #vanta-background div
-          mouseControls: false,
-  touchControls: false,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  color: 0xfa7000,
-  size: 3.70,
-  spacing: 21.00,
-  showLines: false
-        });
+      // VANTA DOTS Initialization
+      VANTA.DOTS({
+        el: "#vanta-background",
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xfa7000,
+        size: 3.7,
+        spacing: 21.0,
+        showLines: false,
+      });
 
-      document.querySelectorAll('.navbar .link').forEach((link, index) => {
-        link.addEventListener('click', () => {
-          document.querySelectorAll('.tab').forEach((tab, tabIndex) => {
+      // Tabs Navigation Script
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll(".tab");
+        const links = document.querySelectorAll(".navbar .link");
+
+        // Ensure the counts match
+        if (links.length !== tabs.length) {
+          console.error(
+            "Mismatch between tabs and links. Check your HTML structure."
+          );
+          return;
+        }
+
+        const selectTab = (index) => {
+          tabs.forEach((tab, tabIndex) => {
             if (index === tabIndex) {
-              tab.classList.remove('hide');
-              link.classList.add('active');
+              tab.classList.remove("hide");
+              links[tabIndex].classList.add("active");
             } else {
-              tab.classList.add('hide');
-              document.querySelectorAll('.navbar .link')[tabIndex].classList.remove('active');
+              tab.classList.add("hide");
+              links[tabIndex].classList.remove("active");
             }
           });
+        };
+
+        links.forEach((link, index) => {
+          link.addEventListener("click", () => selectTab(index));
         });
       });
     </script>

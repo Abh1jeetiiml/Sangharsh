@@ -98,7 +98,7 @@ async function getAllMatches() {
         // Add event listener to the "Close" button
         document.getElementById('close-button').addEventListener('click', () => {
           matchesContainerEl.innerHTML = ''; // Clear the matches content
-          sportTilesEl.style.display = 'flex'; // Show the tiles again
+          sportTilesEl.style.display = 'grid'; // Show the tiles again
         });
       });
     });

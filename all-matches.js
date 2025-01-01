@@ -115,3 +115,4 @@ function formatCricketScore(score) {
   const wickets = parts[1] ? parts[1] : '0'; // Wickets (decimal part or default 0)
   return `${runs}/${wickets}`;
 }
+

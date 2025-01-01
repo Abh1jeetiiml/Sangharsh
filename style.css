@@ -473,29 +473,39 @@ h2 {
   background-color: #0056b3;
 }
 
+/* Container for the sport tiles */
 .sport-tiles-container {
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 columns, each taking equal space */
+  grid-gap: 10px; /* Space between tiles */
   margin-bottom: 20px;
+  justify-items: center; /* Centers tiles within each grid cell */
 }
 
+/* Individual sport tile */
 .sport-tile {
   padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
+  background-color: #f0f1f1;
+  color: rgb(12, 23, 18);
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
+  width: 100%; /* Ensure the tile takes full width within its grid cell */
+  box-sizing: border-box;
+  transition: background-color 0.3s;
 }
 
+/* Hover effect on sport tile */
 .sport-tile:hover {
-  background-color: #0056b3;
+  background-color: #abafb3;
 }
 
+/* Active sport tile */
 .sport-tile.active {
   background-color: #ff4500;
 }
 
+/* Close button styling */
 .close-button {
   background-color: #c20e0e;
   color: white;
@@ -512,12 +522,42 @@ h2 {
   background-color: #f85c00;
 }
 
-/* Add this container styling for centering */
+/* Centering all matches tab */
 #all-matches-tab {
   display: flex;
   flex-direction: column;
   align-items: center; /* Centers horizontally */
-  justify-content: center; /* Centers vertically if needed */
+  justify-content: center; /* Centers vertically */
+}
+
+/* Responsive design for smaller screens (mobile and tablet) */
+@media screen and (max-width: 768px) {
+  .sport-tiles-container {
+    flex-direction: column; /* Stack sport tiles vertically */
+    gap: 15px; /* Increase gap for better spacing on smaller screens */
+  }
+
+  .sport-tile {
+    width: 100%; /* Make tiles take full width on mobile */
+    padding: 15px 20px; /* Increase padding for better touch interaction */
+    font-size: 16px; /* Adjust font size for readability */
+  }
+
+  .close-button {
+    width: 100%; /* Ensure close button takes full width on mobile */
+    padding: 15px 0; /* Make the button taller for easier tap */
+    font-size: 18px; /* Larger text for readability */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sport-tile {
+    font-size: 14px; /* Make text smaller on very small screens */
+  }
+
+  .close-button {
+    font-size: 16px; /* Slightly smaller text for the close button on small screens */
+  }
 }
 
 .modal {

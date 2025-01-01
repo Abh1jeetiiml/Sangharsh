@@ -1,193 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SANGHARSH 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="./today-matches.js" defer></script>
     <script src="./all-matches.js" defer></script>
     <script src="./standings.js" defer></script>
     <script src="./navigation.js" defer></script>
     <script src="./init.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"></script>
-</head>
-
-<body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.dots.min.js"
+    ></script>
+  </head>
+  <body>
     <section id="page1" class="page">
-        <div class="header">
-            <img src="https://i.imgur.com/TLiUl2x_d.webp?maxwidth=1520&fidelity=grand" alt="Sangharsh Logo" />
-            <h1 class="header1">SANGHARSH 2025</h1>
-            <img src="https://i.imgur.com/mgQyATT_d.webp?maxwidth=760&fidelity=grand" alt="Sangharsh Logo" />
-        </div>
+      <div class="header">
+        <img
+          src="https://i.imgur.com/TLiUl2x_d.webp?maxwidth=1520&fidelity=grand"
+          alt="Sangharsh Logo"
+        />
+        <h1 class="header1">SANGHARSH 2025</h1>
+        <img
+          src="https://i.imgur.com/mgQyATT_d.webp?maxwidth=760&fidelity=grand"
+          alt="Sangharsh Logo"
+        />
+      </div>
 
-        <!-- Main Sponsor -->
-        <div class="main-sponsor">
-            <img src="https://i.imgur.com/MhBSylB_d.webp?maxwidth=1520&fidelity=grand" alt="PUMA" />
-        </div>
-        <div class="sponsor-logos">
-            <img src="https://www.logo-designer.co/storage/2017/04/2017-Design-Stack-new-logo-design-State-Bank-of-India.png" alt="Sponsor 1" />
-            <img src="https://thegodofsports.com/wp-content/uploads/2020/12/OBJECTS.svg" alt="Sponsor 2" />
-        </div>
-        </div>
+      <!-- Main Sponsor -->
+      <div class="main-sponsor">
+        <img
+          src="https://i.imgur.com/MhBSylB_d.webp?maxwidth=1520&fidelity=grand"
+          alt="PUMA"
+        />
+      </div>
+      <div class="sponsor-logos">
+        <img src="https://www.logo-designer.co/storage/2017/04/2017-Design-Stack-new-logo-design-State-Bank-of-India.png" alt="Sponsor 1" />
+        <img src="https://thegodofsports.com/wp-content/uploads/2020/12/OBJECTS.svg" alt="Sponsor 2" />
+      </div>
+    </div>
 
-        <!-- Participating Institutes -->
-        <div class="institutes">
-            <div class="institute-logos">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/IIM_Lucknow_Logo.svg/1200px-IIM_Lucknow_Logo.svg.png" alt="Institute 4" />
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/IIMA_LOGO_BLACK.png" alt="Institute 1" />
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/IIM_Bangalore_Logo.svg/440px-IIM_Bangalore_Logo.svg.png" alt="Institute 2" />
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/IIM_Calcutta_Logo.svg/1200px-IIM_Calcutta_Logo.svg.png" alt="Institute 3" />
-            </div>
+      <!-- Participating Institutes -->
+      <div class="institutes">
+        <div class="institute-logos">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/4/4b/IIM_Lucknow_Logo.svg/1200px-IIM_Lucknow_Logo.svg.png"
+            alt="Institute 4"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/2/27/IIMA_LOGO_BLACK.png"
+            alt="Institute 1"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/IIM_Bangalore_Logo.svg/440px-IIM_Bangalore_Logo.svg.png"
+            alt="Institute 2"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/IIM_Calcutta_Logo.svg/1200px-IIM_Calcutta_Logo.svg.png"
+            alt="Institute 3"
+          />
         </div>
-        <div class="left-panel">
-            <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mnSx1Q8KJEyUTlEBWLX2CJSmcxt-DhSXTVsUXwJLccw/edit?usp=sharing'">
-                Link to Schedule
-            </button>
-            <!-- Uncomment the line 84 on the final day -->
-            <!-- <button id="openModalBtn">Final Standings</button> -->
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <div id="table-container">Loading data...</div>
-                    <button class="close-btn" id="closeModalBtn">Close</button>
-                </div>
-            </div>
+      </div>
+      <div class="left-panel">
+        <button onclick="window.location.href='https://docs.google.com/spreadsheets/d/1mnSx1Q8KJEyUTlEBWLX2CJSmcxt-DhSXTVsUXwJLccw/edit?usp=sharing'">
+          Link to Schedule
+        </button>
+        <!-- Uncomment the line 84 on the final day -->
+        <!-- <button id="openModalBtn">Final Standings</button> -->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <div id="table-container">Loading data...</div>
+            <button class="close-btn" id="closeModalBtn">Close</button>
+          </div>
         </div>
+  </div>
     </section>
 
     <!-- Page 2 -->
     <section id="page2" class="page">
-        <div id="vanta-background"></div>
-        <!-- Vanta Background -->
-        <div class="navbar">
-            <div class="link active">Today's Schedule</div>
-            <div class="link">Completed Matches</div>
-            <div class="link">Standings</div>
+      <div id="vanta-background"></div> <!-- Vanta Background -->
+      <div class="navbar">
+        <div class="link active">Today's Schedule</div>
+        <div class="link">Completed Matches</div>
+        <div class="link">Standings</div>
+      </div>
+      <div class="tabs">
+        <div id="today-matches" class="tab today-matches">
+          <div class="loading" style="color: white;">Loading ...</div>
         </div>
-        <div class="tabs">
-            <div id="today-matches" class="tab today-matches">
-                <div class="loading" style="color: white;">Loading ...</div>
-            </div>
-            <div id="all-matches-tab" class="tab all-matches hide">
-                <div id="sport-tiles" class="sport-tiles-container"></div>
-                <div id="matches-container"></div>
-            </div>
-            <div id="standings-tab" class="tab standings hide">
-                <div class="loading" style="color: white;">Loading ...</div>
-            </div>
+        <div id="all-matches-tab" class="tab all-matches hide">
+          <div id="sport-tiles" class="sport-tiles-container"></div>
+          <div id="matches-container"></div>
         </div>
+        <div id="standings-tab" class="tab standings hide">
+          <div class="loading" style="color: white;">Loading ...</div>
+        </div>
+      </div>
     </section>
 
     <script>
-        // VANTA DOTS Initialization
-          VANTA.DOTS({
-            el: "#vanta-background",
-            mouseControls: false,
-            touchControls: false,
-            gyroControls: false,
-            minHeight: 200.0,
-            minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
-            color: 0xfa7000,
-            size: 3.7,
-            spacing: 21.0,
-            showLines: false,
-          });
-    
-          // Tabs Navigation Script
-          document.addEventListener("DOMContentLoaded", () => {
-            const tabs = document.querySelectorAll(".tab");
-            const links = document.querySelectorAll(".navbar .link");
-    
-            // Ensure the counts match
-            if (links.length !== tabs.length) {
-              console.error(
-                "Mismatch between tabs and links. Check your HTML structure."
-              );
-              return;
-            }
-    
-            const selectTab = (index) => {
-              tabs.forEach((tab, tabIndex) => {
-                if (index === tabIndex) {
-                  tab.classList.remove("hide");
-                  links[tabIndex].classList.add("active");
-                } else {
-                  tab.classList.add("hide");
-                  links[tabIndex].classList.remove("active");
-                }
-              });
-            };
-    
-            links.forEach((link, index) => {
-              link.addEventListener("click", () => selectTab(index));
-            });
-          });
-    
-          const modal = document.getElementById("modal");
-        const openModalBtn = document.getElementById("openModalBtn");
-        const closeModalBtn = document.getElementById("closeModalBtn");
-    
-        // Set the Web App URL (replace this with your actual Web App URL)
-        const webAppUrl = "https://script.google.com/macros/s/AKfycbw2b1TKdDAzsUZEdt_oVE31fca3dajuaa_eXTCKyGzl7XPSgI-zXDA_XqLnb8WtxXFc-w/exec";  // Example: 
-    
-      // Open modal and fetch data from Apps Script
-      openModalBtn.addEventListener("click", () => {
-        // Open modal
-        modal.style.display = "flex";
-        
-        // Fetch data from Google Apps Script Web App
-        fetch(webAppUrl)
-          .then(response => response.json())
-          .then(data => {
-            displayTable(data);
-          })
-          .catch(error => {
-            console.error("Error fetching data:", error);
-            document.getElementById('table-container').innerHTML = "Error loading data.";
-          });
+      // VANTA DOTS Initialization
+      VANTA.DOTS({
+        el: "#vanta-background",
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0xfa7000,
+        size: 3.7,
+        spacing: 21.0,
+        showLines: false,
       });
-    
-      // Close modal
-      closeModalBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-    
-      // Close modal when clicking outside the content
-      window.addEventListener("click", (event) => {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-    
-      function displayTable(data) {
-        let html = "<table>";
-        html += "<thead><tr>";
-        data[0].forEach(header => {
-          html += `<th>${header}</th>`;
-        });
-        html += "</tr></thead><tbody>";
-    
-        data.slice(1).forEach(row => {
-          html += "<tr>";
-          row.forEach(cell => {
-            html += `<td>${cell}</td>`;
-          });
-          html += "</tr>";
-        });
-    
-        html += "</tbody></table>";
-        document.getElementById('table-container').innerHTML = html;
-      }
-    </script>
-</body>
 
+      // Tabs Navigation Script
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll(".tab");
+        const links = document.querySelectorAll(".navbar .link");
+
+        // Ensure the counts match
+        if (links.length !== tabs.length) {
+          console.error(
+            "Mismatch between tabs and links. Check your HTML structure."
+          );
+          return;
+        }
+
+        const selectTab = (index) => {
+          tabs.forEach((tab, tabIndex) => {
+            if (index === tabIndex) {
+              tab.classList.remove("hide");
+              links[tabIndex].classList.add("active");
+            } else {
+              tab.classList.add("hide");
+              links[tabIndex].classList.remove("active");
+            }
+          });
+        };
+
+        links.forEach((link, index) => {
+          link.addEventListener("click", () => selectTab(index));
+        });
+      });
+
+      const modal = document.getElementById("modal");
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    // Set the Web App URL (replace this with your actual Web App URL)
+    const webAppUrl = "https://script.google.com/macros/s/AKfycbw2b1TKdDAzsUZEdt_oVE31fca3dajuaa_eXTCKyGzl7XPSgI-zXDA_XqLnb8WtxXFc-w/exec";  // Example: 
+
+  // Open modal and fetch data from Apps Script
+  openModalBtn.addEventListener("click", () => {
+    // Open modal
+    modal.style.display = "flex";
+    
+    // Fetch data from Google Apps Script Web App
+    fetch(webAppUrl)
+      .then(response => response.json())
+      .then(data => {
+        displayTable(data);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        document.getElementById('table-container').innerHTML = "Error loading data.";
+      });
+  });
+
+  // Close modal
+  closeModalBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Close modal when clicking outside the content
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  function displayTable(data) {
+    let html = "<table>";
+    html += "<thead><tr>";
+    data[0].forEach(header => {
+      html += `<th>${header}</th>`;
+    });
+    html += "</tr></thead><tbody>";
+
+    data.slice(1).forEach(row => {
+      html += "<tr>";
+      row.forEach(cell => {
+        html += `<td>${cell}</td>`;
+      });
+      html += "</tr>";
+    });
+
+    html += "</tbody></table>";
+    document.getElementById('table-container').innerHTML = html;
+  }
+    </script>
+  </body>
 </html>
